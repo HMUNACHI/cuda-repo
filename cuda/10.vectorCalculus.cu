@@ -19,10 +19,8 @@ N/B: The Newton-Raphson only calculates the first 10 iteration results for demon
 When we take the Newton-Raphson of the derivative of the function, we are finding the zero of the derivative.
 That is the point where the derivative (chhange of the function is at a maximum or minimum), aka optimisation.
 
-This is the bedrock of optimization. You can run on even higher order derivatives.
-
-If you use the calculate derivative kernel to calculate the derivative of a function, you can use again  to 
-calculate the derivative of its outputs and so on.
+You can run on even higher-order derivatives. If you calculate the derivative of a function, 
+you can use again to calculate the derivative of its outputs and so on.
 */
 
 __global__ void calculateDerivative(float* input, float* output, float h, int numElements) {
