@@ -4,7 +4,7 @@
 
 /*
 
-CUDA kernels that calculates the following in paralle on GPU for a batch of inputs:
+CUDA kernels that calculates the following in parallel on GPU for a batch of inputs:
 
 - The derivative of sin - sin'(x) = (sin(x + h) - sin(x - h)) / 2h
 - The integral of sin - ∫sin(x)dx = h * (sin(x) + sin(x - h)) / 2
