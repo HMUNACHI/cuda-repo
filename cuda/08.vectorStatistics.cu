@@ -11,7 +11,6 @@ CUDA kernels that calculates:
 - The mean of a vector
 - The standard deviation of a vector
 - The normalisation of the vector - (xi - μ) / σ
-- The standard error of the vector - SE = σ / √n
 - The skewness of the vector - (1/n) * Σ[(xi - μ) / σ]^3
 - The kurtosis of the vector - (1/n) * Σ[(xi - μ) / σ]^4
 - Variance (s²) = (1 / (n - 1)) * Σ(xi - x̄)²
