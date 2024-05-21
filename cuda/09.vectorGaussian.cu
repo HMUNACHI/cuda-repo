@@ -18,16 +18,6 @@ This CUDA program uses multiple global kernels to calculate the mean, standard d
 and then the Gaussian function whioch models a vector of distributions as a gaussian.
 Atomic operations are used to aggregate the results of the mean, standard deviation, and maximum value.
 
-Excercise: Use the concepts from this program to implement a kernel that calculates 
-1) The median of a vector - the middle value of a sorted vector.
-2) The mode of the vector - the value that appears most frequently.
-3) The normalisation of the vector - (xi - μ) / σ
-4) The standard error of the vector - SE = σ / √n
-5) The skewness of the vector - (1/n) * Σ[(xi - μ) / σ]^3
-6) The kurtosis of the vector - (1/n) * Σ[(xi - μ) / σ]^4
-7) Variance (s²) = (1 / (n - 1)) * Σ(xi - x̄)²
-8) Covariance = (1 / (n - 1)) * Σ(xi - x̄)(yi - ȳ)
-
 */
 
 __global__ void vectorMean(const float *vector, float *mean, int numElements){
