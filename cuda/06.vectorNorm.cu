@@ -9,7 +9,7 @@
 
 The math:
 In scalars, we know that 10 > 5 and 6 < 100 but how do we similarly quantify vectors?
-We take their norms and L2 ||v||₂ = √(v₁² + v₂² + ... + vₙ²)
+We take their norms, and L2 norm ||v||₂ = √(v₁² + v₂² + ... + vₙ²)
 In reality, this equivalent to quantify the distance from the origin to the point defined by the vector.
 But for norms we assume the origin of all axis to be 0.
 L2 ||v||₂ = √((v₁-0)² + (v₂-0)² + ... + (vₙ-0)²)
