@@ -5,7 +5,7 @@
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
-// CUDA kernel function to multiply two vectors
+// CUDA kernel for element-wise multiplication of two vectors aka Hadamard product
 __global__ void vectorMul(const float *a,
                           const float *b,
                           float *c,
