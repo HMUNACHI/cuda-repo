@@ -5,8 +5,20 @@
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
-// CUDA kernel for element-wise multiplication of two vectors aka Hadamard product
-__global__ void vectorMul(const float *a,
+/* 
+
+Hadamard Product of Two Vectors: 
+--------------------------
+Given two vectors 'a' and 'b' of the same dimension 'n', their hHadamard or Element-wise product is defined as: 
+
+a ⊙ b = (a1 * b1, a2 * b2, ..., an * bn)
+
+You can think of the Hadamard as directly scaling each element of a by the corresponding element of b. 
+In some applications, it is more intuitive to multiply matrices component-wise rather than combining them through dot products. 
+This is common in element-wise operations in neural networks and image processing, where operations often need to be applied independently to each pixel.
+
+*/
+__global__ void vectorHadamard(const float *a,
                           const float *b,
                           float *c,
                           float numElements){
@@ -65,7 +77,7 @@ int main(){
     int blocksPerGrid = (numElements + threadsPerBlock - 1) / threadsPerBlock;
 
     // Launch the vector multiplication kernel
-    vectorMul<<<blocksPerGrid, threadsPerBlock>>>(deviceA, deviceB, deviceC, numElements);
+    vectorHadamard<<<blocksPerGrid, threadsPerBlock>>>(deviceA, deviceB, deviceC, numElements);
 
     // Copy the result vector from device to host
     cudaMemcpy(hostC, deviceC, size, cudaMemcpyDeviceToHost);

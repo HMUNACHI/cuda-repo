@@ -14,6 +14,7 @@ If they match, it swaps the value at the memory address with the new value.
 The function returns the original value that was at the memory address before the operation. 
 This operation is atomic, meaning it's guaranteed to be performed without interruption by other threads. 
 This is crucial when many threads may be trying to update the same memory location simultaneously.
+
 */
 
 __device__ float atomicMax(float* address, float val)

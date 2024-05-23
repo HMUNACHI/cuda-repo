@@ -8,15 +8,18 @@
 /* 
 
 The math:
+---------------
 The Gaussian function, also known as the normal distribution, is a bell-shaped curve that describes many natural phenomena. 
 The formula for a Gaussian function is: f(x) = max * exp(-((x - mean)^2) / (2 * std^2)).
 This is not to be confused with (1 / √(2π)) * exp(-x^2 / 2), a special case of the Gaussian function 
 where the mean is 0 and the standard deviation is 1.
 
 CUDA implementation:
+--------------------
 This CUDA program uses multiple global kernels to calculate the mean, standard deviation, maximum value, 
 and then the Gaussian function whioch models a vector of distributions as a gaussian.
-Atomic operations are used to aggregate the results of the mean, standard deviation, and maximum value.
+This demos solving real-word problems with maths and accelating the computation with GPU.
+We resuse many concepts from the preceding files so they sink in.
 
 */
 

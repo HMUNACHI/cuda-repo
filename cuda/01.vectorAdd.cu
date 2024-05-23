@@ -2,7 +2,13 @@
 #include <cuda_runtime.h> // for CUDA runtime functions
 #include <device_launch_parameters.h> // for CUDA kernel launch parameters
 
-// CUDA kernel for adding vectors
+/* 
+
+Addition of Two Vectors: 
+--------------------------
+a + b = (a1 + b1, a2 + b2, ..., an + bn)
+
+*/
 __global__ void vectorAdd(const int *a, 
                           const int *b, 
                           int *c, 

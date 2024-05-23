@@ -20,7 +20,7 @@ CUDA enables substantial speedups compared to traditional CPU-only code for suit
 GPUs can process vast amounts of data in parallel, accelerating computations that would take much longer on CPUs.
 For certain types of workloads, GPUs can be more energy-efficient than CPUs, delivering higher performance per watt.
 
-## Structure
+### CUDA Code Structure
 
 Host Code (CPU): This is standard C/C++ code that runs on the CPU. It typically includes:
 - Initialization of CUDA devices and contexts.
@@ -33,6 +33,27 @@ Host Code (CPU): This is standard C/C++ code that runs on the CPU. It typically 
 Device Code (GPU): This code, often written using the CUDA C/C++ extension, is specifically designed to run on the GPU. It defines:
 - Kernels: Functions executed in parallel by many GPU threads. Each thread receives a unique thread ID that helps it determine its portion of the work.
 - Thread Hierarchy: GPU threads are organized into blocks and grids, allowing for efficient execution across the GPU's architecture.
+
+
+## Prelimnary Videos
+
+### 1. High-Level Concepts
+[![YouTube Video](https://img.youtube.com/vi/4APkMJdiudU/0.jpg)](https://www.youtube.com/watch?v=4APkMJdiudU)
+
+### 2. Programming Model
+[![YouTube Video](https://img.youtube.com/vi/cKI20rITSvo/0.jpg)](https://www.youtube.com/watch?v=cKI20rITSvo)
+
+### 3. Parallelising a For Loop
+[![YouTube Video](https://img.youtube.com/vi/BSzoEXqP9aU/0.jpg)](https://www.youtube.com/watch?v=BSzoEXqP9aU)
+
+### 4. Indexing Threads within Grids and Blocks
+[![YouTube Video](https://img.youtube.com/vi/cRY5utouJzQ/0.jpg)](https://www.youtube.com/watch?v=cRY5utouJzQ)
+
+### 5. Memory Model
+[![YouTube Video](https://img.youtube.com/vi/OSpy-HoR0ac/0.jpg)](https://www.youtube.com/watch?v=OSpy-HoR0ac)
+
+### 6. Synchronisation
+[![YouTube Video](https://img.youtube.com/vi/PJCISyoGpug/0.jpg)](https://www.youtube.com/watch?v=PJCISyoGpug)
 
 ## Usage
 

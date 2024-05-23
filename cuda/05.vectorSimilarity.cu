@@ -7,12 +7,30 @@
 
 /*
 
-Cosine similarity is a measure of similarity between two non-zero vectors of an inner product space 
-that measures the cosine of the angle between them. Its formula is given by: 
-cos(θ) = (A . B) / (||A|| * ||B||)
-where A and B are vectors and ||A|| and ||B|| are the magnitudes of A and B respectively.
+Cosine Similarity of Two Vectors: 
+---------------------------------
 
-This CUDA implementation shows how to use multiple kernels.
+Cosine similarity is a measure of similarity between two non-zero vectors of an inner product space 
+that measures the cosine of the angle between them. 
+
+Its formula is given by: cos(θ) = (a . b) / (||a|| * ||b||)
+
+where a and b are vectors and ||a|| and ||b|| are the magnitudes (norms) of a and b respectively.
+
+Cosine similarity captures the orientation (or direction) of the vectors rather than their magnitude. 
+If two vectors point in the same direction, the cosine of the angle between them is 1. 
+If they are orthogonal (at 90 degrees to each other), the cosine of the angle is 0, indicating no similarity. 
+If they point in completely opposite directions, the cosine of the angle is -1.
+
+Mathematically, cosine similarity is the dot product of the two vectors divided by the product of their magnitudes. 
+This normalization makes cosine similarity independent of the vector magnitudes, focusing solely on the direction.
+
+n natural language processing (NLP), documents and text are often represented as vectors in a high-dimensional space. 
+Cosine similarity is widely used to compare these document vectors because it effectively measures how similar the documents are 
+in terms of their content, independent of their length.
+
+This CUDA implementation demonstrates how to use multiple kernels sequentially to parallelise the calculation of cosine similarity.
+The main code will from this point be rid of comments for clarity and brevity but wityh readale code.
 
 */
 

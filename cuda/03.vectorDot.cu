@@ -6,17 +6,28 @@
 #include <device_launch_parameters.h>
 
 /* 
-In a parallel computing environment like CUDA, multiple threads may try to read, modify, 
-and write back the same memory location simultaneously. 
-This can lead to race conditions, where the final result depends on the order of operations, 
-which is not predictable in a parallel environment. Atomic operations prevent these race conditions by ensuring 
-that the read-modify-write operations are done as a single, indivisible operation. 
-This means that once a thread starts an atomic operation, no other thread can start another atomic operation 
-on the same memory location until the first one is completed.
+Dot Product of Two Vectors: 
+--------------------------
+Given two vectors 'a' and 'b' of the same dimension 'n', their dot product is defined as: 
 
-For dot products, a · b = a1 * b1 + a2 * b2 + ... + an * bn,
+a · b = a1 * b1 + a2 * b2 + ... + an * bn
 
-We use atomic addition to aggregate the results of the multiplication of each element of the vectors.
+Geometrically, the dot product measures the cosine of the angle between the vectors scaled by their magnitudes.  
+It's useful for tasks like determining if vectors are orthogonal (dot product is zero), projecting one vector onto another, calculating work done by a force.
+Dot products are commutative, distributive, and linear. 
+
+
+CUDA Tweaks:
+--------------------
+In CUDA, we can exploit parallelism to accelerate the calculation of dot products, especially for large vectors. 
+However, naive parallelization can lead to race conditions when multiple threads attempt to update a shared sum simultaneously. 
+So we at such structure our code in the following way:
+
+1. Thread Assignment: Each thread is assigned to compute the product of one pair of elements from the vectors (e.g., thread 1 computes a1 * b1).
+2. Partial Products: Each thread stores its partial product in a local variable.
+3. Atomic Addition: Instead of directly adding their partial products to a shared sum, each thread uses atomicAdd() to perform an atomic update. This guarantees that only one thread updates the shared sum at a time, avoiding race conditions. 
+4. Synchronization (Optional): A synchronization barrier (e.g., __syncthreads()) may be needed to ensure all threads have completed their computations before the final sum is used.
+
 */
 
 // CUDA kernel function to compute the dot product of two vectors

@@ -7,11 +7,20 @@
 
 /*
 
+Correlation Coefficient of Two Vectors:
+----------------------------------------    
 Vector correlation is a measure of the relationship between two or more variables.
 Where -1 indicates a perfect negative correlation, 0 indicates no correlation, and 1 indicates a perfect positive correlation.
-The formula for the correlation coefficient is given by: r = Σ((xi - x̄)(yi - ȳ)) / √(Σ(xi - x̄)² * Σ(yi - ȳ)²)
+The formula for the correlation coefficient is given by: 
 
-This CUDA demonstrates implementation of more complex equations in parallel.
+Pearson r = Σ((xi - x̄)(yi - ȳ)) / √(Σ(xi - x̄)² * Σ(yi - ȳ)²)
+
+Cosine similarity focuses on the angle between vectors, measuring how similar their directions are regardless of magnitude.
+While correlation takes into account the mean and standard deviation of the variables; how the variables change together.
+Not their angle of inclination when plotted in a multi-dimensional space.
+
+This CUDA demonstrates how to breakdown complex equations into multiple sub-kernels and yet parallelise.
+However, launching kernels takes overhead cost, so it's not always beneficial to break down into multiple kernels.
 
 */
 
@@ -22,10 +31,10 @@ __global__ void calculateNumerator(const float *a, const float *b, float *numera
     }
 }
 
-__global__ void calculateDenominator(const float *vector, float *denominator, float mean, int numElements) {
+__global__ void calculateDenominator(const float *vector, float *denominator, float meanB, int numElements) {
     int idx = blockDim.x * blockIdx.x + threadIdx.x;
     if (idx < numElements){
-        atomicAdd(denominator, (vector[idx] - mean) * (vector[idx] - mean));
+        atomicAdd(denominator, (vector[idx] - meanB) * (vector[idx] - meanB));
     }
 }
 
