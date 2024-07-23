@@ -96,8 +96,8 @@ void matrixMultiplySharded(
 
 
 void fillMatrix(float* matrix, int rows, int cols) {
-    for (int row = 0; row < rows; ++i) {
-        for (int col = 0; col < cols; ++j) {
+    for (int row = 0; row < rows; ++row) {
+        for (int col = 0; col < cols; ++col) {
             matrix[row * cols + col] = static_cast<float>(rand()) / RAND_MAX;
         }
     }
